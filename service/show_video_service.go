@@ -12,7 +12,7 @@ func (service *ShowVideoService) Show(id string) serializer.Response {
 	err := model.DB.First(&video, id).Error
 	if err != nil {
 		return serializer.Response{
-			Status: 200,
+			Status: 500,
 			Msg:    "Show video failed",
 			Error:  err.Error(),
 		}

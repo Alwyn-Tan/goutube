@@ -17,28 +17,28 @@ func CreateVideo(context *gin.Context) {
 
 func ShowVideo(context *gin.Context) {
 	showVideoService := service.ShowVideoService{}
-	if err := context.ShouldBind(&showVideoService); err == nil {
-		res := showVideoService.Show(context.Param("id"))
-		context.JSON(200, res)
-	} else {
-		context.JSON(200, ErrorResponse(err))
-	}
+	res := showVideoService.Show(context.Param("id"))
+	context.JSON(200, res)
 }
 
 func ListVideo(context *gin.Context) {
 	listVideoService := service.ListVideoService{}
-	if err := context.ShouldBind(&listVideoService); err == nil {
-		res := listVideoService.List()
+	res := listVideoService.List()
+	context.JSON(200, res)
+}
+
+func UpdateVideo(context *gin.Context) {
+	updateVideoService := service.UpdateVideoService{}
+	if err := context.ShouldBind(&updateVideoService); err == nil {
+		res := updateVideoService.Update(context.Param("id"))
 		context.JSON(200, res)
 	} else {
 		context.JSON(200, ErrorResponse(err))
 	}
 }
 
-func UpdateVideo(context *gin.Context) {
-
-}
-
 func DeleteVideo(context *gin.Context) {
-
+	deleteVideoService := service.DeleteVideoService{}
+	res := deleteVideoService.Delete(context.Param("id"))
+	context.JSON(200, res)
 }
