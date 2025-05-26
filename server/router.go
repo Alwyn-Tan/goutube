@@ -1,8 +1,7 @@
 package server
 
 import (
-	"golang.org/x/net/html/atom"
-	"goutube/api"
+	"goutube/controller"
 	"goutube/middleware"
 	"os"
 
@@ -18,24 +17,24 @@ func NewRouter() *gin.Engine {
 
 	v1 := r.Group("/api/v1")
 	{
-		v1.POST("ping", api.Ping)
+		v1.POST("ping", controller.Ping)
 
-		v1.POST("user/register", api.UserRegister)
+		v1.POST("user/register", controller.UserRegister)
 
-		v1.POST("user/login", api.UserLogin)
+		v1.POST("user/login", controller.UserLogin)
 
 		auth := v1.Group("")
 		auth.Use(middleware.AuthRequired())
 		{
-			auth.GET("user/me", api.UserMe)
-			auth.DELETE("user/logout", api.UserLogout)
+			auth.GET("user/me", controller.UserMe)
+			auth.DELETE("user/logout", controller.UserLogout)
 		}
 
-		v1.POST("video", api.CreateVideo)
-		v1.GET("video/:id", api.ShowVideo)
-		v1.GET("video", api.ListVideo)
-		v1.PUT("video/:id", api.UpdateVideo)
-		v1.DELETE("video/:id", api.DeleteVideo)
+		v1.POST("videos", controller.CreateVideo)
+		v1.GET("video/:id", controller.ShowVideo)
+		v1.GET("videos", controller.ListVideo)
+		v1.PUT("video/:id", controller.UpdateVideo)
+		v1.DELETE("video/:id", controller.DeleteVideo)
 	}
 	return r
 }

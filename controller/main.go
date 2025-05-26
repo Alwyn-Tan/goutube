@@ -1,4 +1,4 @@
-package api
+package controller
 
 import (
 	"encoding/json"
@@ -13,8 +13,8 @@ import (
 
 func Ping(c *gin.Context) {
 	c.JSON(200, serializer.Response{
-		Code: 0,
-		Msg:  "Pong",
+		Status: 0,
+		Msg:    "Pong",
 	})
 }
 

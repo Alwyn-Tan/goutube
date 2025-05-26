@@ -1,4 +1,4 @@
-package api
+package controller
 
 import (
 	"goutube/serializer"
@@ -43,7 +43,7 @@ func UserLogout(c *gin.Context) {
 	s.Clear()
 	s.Save()
 	c.JSON(200, serializer.Response{
-		Code: 0,
-		Msg:  "登出成功",
+		Status: 0,
+		Msg:    "登出成功",
 	})
 }
