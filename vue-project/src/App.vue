@@ -1,16 +1,16 @@
 <script>
 import NaviBar from "@/components/NaviBar.vue";
-export default{
-  name:  'App',
-  components: {NaviBar},
-}
+export default {
+  name: "App",
+  components: { NaviBar },
+};
 </script>
 
 <template>
   <div id="app">
-    <NaviBar/>
+    <NaviBar />
+    <router-view />
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
