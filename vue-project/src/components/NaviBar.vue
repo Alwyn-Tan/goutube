@@ -5,10 +5,16 @@ export default {
 </script>
 
 <template>
-  <el-menu class="navi-bar" mode="horizontal" :ellipsis="false" router>
-    <el-menu-item index="/">Home</el-menu-item>
-    <el-menu-item index="/upload">Upload</el-menu-item>
-    <el-menu-item index="/about">About</el-menu-item>
+  <el-menu class="navi-bar" mode="horizontal" :ellipsis="false">
+    <el-menu-item index="/">
+      <router-link to="/">Home</router-link>
+    </el-menu-item>
+    <el-menu-item index="/upload">
+      <router-link to="/upload">Upload</router-link>
+    </el-menu-item>
+    <el-menu-item index="/about">
+      <router-link to="/about">About</router-link>
+    </el-menu-item>
   </el-menu>
 </template>
 
