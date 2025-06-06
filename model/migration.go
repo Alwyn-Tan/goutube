@@ -1,9 +1,9 @@
 package model
 
-//执行数据迁移
+// Perform database migration
 
 func migration() {
-	// 自动迁移模式
+	// Auto migration mode
 	_ = DB.AutoMigrate(&User{})
 	_ = DB.AutoMigrate(&Video{})
 }

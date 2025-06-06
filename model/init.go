@@ -41,10 +41,10 @@ func Database(connString string) {
 		panic(err)
 	}
 
-	//设置连接池
-	//空闲
+	// Set connection pool
+	// Set max idle connections
 	sqlDB.SetMaxIdleConns(10)
-	//打开
+	// Set max open connections
 	sqlDB.SetMaxOpenConns(20)
 	DB = db
 
