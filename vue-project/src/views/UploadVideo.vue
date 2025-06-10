@@ -23,7 +23,7 @@ export default {
       }
       uploadVideo(this.form)
           .then((res) => {
-            if (res.data.status > 0) {
+            if (res.status > 0) {
               this.$notify.error({
                 title: "Error",
                 message: "The server is down",
@@ -31,7 +31,7 @@ export default {
             } else {
               this.$notify({
                 title: "Success",
-                message: `Video ${res.data.data.id} Uploaded Successfully!`,
+                message: `Video ${res.data.id} Uploaded Successfully!`,
                 type: "success",
               });
             }
