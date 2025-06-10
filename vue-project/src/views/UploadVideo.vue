@@ -1,5 +1,5 @@
 <script>
-import * as API from "@/api/video/index.js";
+import {uploadVideo} from "@/api/video/index.js";
 
 export default {
   name: "UploadVideo",
@@ -13,6 +13,7 @@ export default {
   },
   methods: {
     onSubmit() {
+      console.log(import.meta.env.VITE_APP_URL);
       if (!this.form.title.trim()) {
         this.$notify.error({
           title: "Error",
@@ -20,27 +21,21 @@ export default {
         });
         return;
       }
-      API.uploadVideo(this.form)
+      uploadVideo(this.form)
           .then((res) => {
-            if (res.status > 0) {
+            if (res.data.status > 0) {
               this.$notify.error({
                 title: "Error",
-                message: res.msg,
+                message: "The server is down",
               });
             } else {
               this.$notify({
                 title: "Success",
-                message: `Video ${res.data.id} Uploaded Successfully!`,
+                message: `Video ${res.data.data.id} Uploaded Successfully!`,
                 type: "success",
               });
             }
           })
-          .catch((error) => {
-            this.$notify.error({
-              title: "Error",
-              message: "The server is down, please try another time",
-            });
-          });
     },
   },
 };
